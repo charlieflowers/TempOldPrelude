@@ -1,0 +1,1 @@
+(prelude-load-common-lisp-slime)
