@@ -62,3 +62,8 @@
   (kbd "M-J") 'org-metadown
   (kbd "M-K") 'org-metaup
   (kbd "M-L") 'org-metaright)
+
+
+;; These are key combos I want.
+(define-key evil-normal-state-map ",1" 'delete-other-windows) ;; Like emacs C-x 1 (I hope)
+(define-key evil-normal-state-map ",b" 'ido-switch-buffer)    ;; Hopefully same as C-x b
