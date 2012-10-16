@@ -99,9 +99,20 @@
 ;;  2. Indent the current sexp (which is the top, since we went there) (indent-pp-sexp)
 ;;  3. RETURN to where the cursor was originally (tricky, since shit has moved around)
 
+;; UPDATE: There ARE solutions for # 3, but they involve some tradeoffs I don't
+;;  fully understand yet, so I'm going to hold off. ,TAB is pretty awesome for now!
+
 (define-key evil-normal-state-map ",\t" #'charlie/indent-top-sexp-and-return)
 
 (evil-define-command charlie/indent-top-sexp-and-return ()
   (interactive)
   (evil-backward-sentence)
   (indent-pp-sexp))
+
+;; Here's another one I'm cobbling together.
+;; I want ,r to switch to the repl (when there is a repl)
+(define-key evil-normal-state-map ",r" #'charlie/switch-to-repl-buffer)
+
+(evil-define-command charlie/switch-to-repl-buffer ()
+  (interactive)
+  (switch-to-buffer "*slime-repl ccl*"))
