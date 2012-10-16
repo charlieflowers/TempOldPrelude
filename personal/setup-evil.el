@@ -88,3 +88,7 @@
         (push 'escape unread-command-events))
        (t (setq unread-command-events (append unread-command-events
                                               (list evt))))))))
+
+;; Here's a couple of org-mode keys i like:
+(evil-declare-key 'normal org-mode-map "T" 'org-todo)
+(evil-declare-key 'normal org-mode-map "-" 'org-cycle-list-bullet)
