@@ -26,3 +26,8 @@
                               (semantic-symref-results-mode  . emacs)
                               (rdictcc-buffer-mode           . emacs))
       do (evil-set-initial-state mode state))
+
+;; A couple of key bindings for insert mode that are useful (from cofi evil)
+(fill-keymap evil-insert-state-map
+             "C-y" 'yank
+             )
