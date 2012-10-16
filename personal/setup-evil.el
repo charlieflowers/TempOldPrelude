@@ -92,3 +92,16 @@
 ;; Here's a couple of org-mode keys i like:
 (evil-declare-key 'normal org-mode-map "T" 'org-todo)
 (evil-declare-key 'normal org-mode-map "-" 'org-cycle-list-bullet)
+
+;; OK, I am piecing this together by myself, but it's going to be sweet!
+;; I want ,TAB to do the following:
+;;  1. Go to the top of the sexp I'm on (evil-backward-sentence)
+;;  2. Indent the current sexp (which is the top, since we went there) (indent-pp-sexp)
+;;  3. RETURN to where the cursor was originally (tricky, since shit has moved around)
+
+(define-key evil-normal-state-map ",\t" #'charlie/indent-top-sexp-and-return)
+
+(evil-define-command charlie/indent-top-sexp-and-return ()
+  (interactive)
+  (evil-backward-sentence)
+  (indent-pp-sexp))
