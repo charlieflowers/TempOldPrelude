@@ -67,3 +67,24 @@
 ;; These are key combos I want.
 (define-key evil-normal-state-map ",1" 'delete-other-windows) ;; Like emacs C-x 1 (I hope)
 (define-key evil-normal-state-map ",b" 'ido-switch-buffer)    ;; Hopefully same as C-x b
+
+;; Here is my attempt to let "jj" exit insert mode
+;; Borrower from here: http://zuttobenkyou.wordpress.com/2011/02/15/some-thoughts-on-emacs-and-vim/
+
+(define-key evil-insert-state-map "j" #'cofi/maybe-exit)
+
+(evil-define-command cofi/maybe-exit ()
+  :repeat change
+  (interactive)
+  (let ((modified (buffer-modified-p)))
+    (insert "j")
+    (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
+                           nil 0.5)))
+      (cond
+       ((null evt) (message ""))
+       ((and (integerp evt) (char-equal evt ?j))
+        (delete-char -1)
+        (set-buffer-modified-p modified)
+        (push 'escape unread-command-events))
+       (t (setq unread-command-events (append unread-command-events
+                                              (list evt))))))))
