@@ -107,7 +107,8 @@
 (evil-define-command charlie/indent-top-sexp-and-return ()
   (interactive)
   (evil-backward-sentence)
-  (indent-pp-sexp))
+  (indent-pp-sexp)
+  (evil-jump-backward))
 
 ;; Here's another one I'm cobbling together.
 ;; I want ,r to switch to the repl (when there is a repl)
