@@ -66,7 +66,7 @@
 
 ;; These are key combos I want.
 (define-key evil-normal-state-map ",1" 'delete-other-windows) ;; Like emacs C-x 1 (I hope)
-(define-key evil-normal-state-map ",b" 'ido-switch-buffer)    ;; Hopefully same as C-x b
+(define-key evil-normal-state-map "gb" 'ido-switch-buffer)    ;; Hopefully same as C-x b
 
 ;; Here is my attempt to let "jj" exit insert mode
 ;; Borrower from here: http://zuttobenkyou.wordpress.com/2011/02/15/some-thoughts-on-emacs-and-vim/
@@ -112,7 +112,7 @@
 
 ;; Here's another one I'm cobbling together.
 ;; I want ,r to switch to the repl (when there is a repl)
-(define-key evil-normal-state-map ",r" #'charlie/switch-to-repl-buffer)
+(define-key evil-normal-state-map "gr" #'charlie/switch-to-repl-buffer)
 
 (evil-define-command charlie/switch-to-repl-buffer ()
   (interactive)
