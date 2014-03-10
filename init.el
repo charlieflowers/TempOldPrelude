@@ -35,6 +35,8 @@
 
 (message "Prelude is powering up... Be patient, Master %s!" (getenv "USER"))
 
+(defvar magit-log-edit-confirm-cancellation nil)
+
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
 (defvar prelude-modules-dir (concat prelude-dir "prelude/")
